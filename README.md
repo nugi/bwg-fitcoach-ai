@@ -16,6 +16,7 @@ Built during **Build with Gemini: World Tour (Track 3: Agent-First Apps)**.
 - 🗄️ **Exercise Catalog & Firestore Data**: Structured database lookup for workouts and exercises (`lookup_exercises`, `log_workout`, `calculate_macros`).
 - 🪟 **Agent-to-User Interface (A2UI)**: Rich interactive cards, tables, and workout routines rendered natively in the frontend interface.
 - 🎨 **Motivational Media Generation**: Post-workout meal concepts and milestone badges with Gemini multimodal imaging.
+- 🎥 **Video Form Demonstrations (Google Omni)**: Generates short motion cues and exercise form videos using `gemini-omni-flash-preview` in the global region and uploads directly to Cloud Storage.
 - 🧪 **Code Sandbox**: Calculates physiological formulas (1RM, training heart rate zones, pacing) safely in an isolated sandbox.
 - 🌐 **FastAPI Web Frontend**: Lightweight proxy talking to the deployed agent over the **A2A Protocol** with a responsive chat UI and built-in A2UI card renderer.
 

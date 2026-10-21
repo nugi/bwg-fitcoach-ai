@@ -36,6 +36,7 @@ from app.firestore_service import (
 )
 from app.image_service import generate_fitness_image
 from app.nutrition_api import lookup_food_nutrition
+from app.video_service import generate_exercise_video
 
 MODEL = "gemini-3.6-flash"
 SANDBOX_RESOURCE_NAME = (
@@ -56,11 +57,12 @@ ROLE_DESCRIPTION = (
     "and workout guidance without asking the user to repeat themselves. "
     "You help users discover suitable exercises, learn proper form cues, calculate cardio training zones, "
     "look up real food macronutrients and nutrition for meal planning, generate motivational achievement badges "
-    "or post-workout meal visuals, plan routines, and track their workouts. "
+    "or post-workout meal visuals, create short video form demonstrations for movements, plan routines, and track their workouts. "
     "Always use your tools to query the exercise catalog (list_exercises, get_exercise_details), "
     "calculate heart rate training zones for runners and endurance athletes (calculate_heart_rate_zones), "
     "fetch real food nutritional data and macros (lookup_food_nutrition), "
     "generate fitness milestone badges or meal visuals (generate_fitness_image), "
+    "generate short exercise form demonstration videos (generate_exercise_video), "
     "record workouts when users complete sets (log_workout), or review past sessions (get_recent_workouts). "
     "You can write and execute Python code in your Agent Platform sandbox environment to solve math, run fitness equations "
     "(such as 1-rep max estimations, pacing splits, calorie/TDEE adjustments), or process data. "
@@ -91,7 +93,7 @@ UI_DESCRIPTION = (
     "{\"Image\": {\"url\": {\"literalString\": \"https://...\"}}}. Never point an "
     "Image at a bare filename, an artifact name, or a non-http(s) path. If you do "
     "not have a public URL, add a short Text line noting the image instead. "
-    "No markdown in text; use the usageHint property ('h1', 'h2', 'h3', 'h4', 'body', 'caption') for "
+    "No markdown in text; use the usageHint property ('h1', 'h2', 'body') for "
     "headings and emphasis. "
     "Output ONLY the raw A2UI JSON array — no prose, and never wrap it in "
     "<a2a_datapart_json> tags or 'kind'/'data'/'metadata' objects."
@@ -133,6 +135,7 @@ root_agent = Agent(
         calculate_heart_rate_zones,
         lookup_food_nutrition,
         generate_fitness_image,
+        generate_exercise_video,
     ],
 )
 
